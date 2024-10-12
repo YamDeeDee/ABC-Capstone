@@ -1,6 +1,11 @@
 # GovTech AI Champions Bootcamp Capstone Project
 # A ChatBot for Agency for Integrated Care Website
 
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
+
 import time
 import streamlit as st
 from logics.customer_query_handler import process_user_message_general

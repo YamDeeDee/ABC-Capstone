@@ -1,11 +1,8 @@
-from dotenv import load_dotenv
 from crewai import Agent, Task, Crew
 from crewai_tools import WebsiteSearchTool
 from IPython.display import display, Markdown
 import streamlit as st
 
-
-#load_dotenv('.env')
 
 OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 

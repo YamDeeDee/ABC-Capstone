@@ -38,4 +38,4 @@ with st.expander("Flowchart for General Enquiry (click to expand or collapse)"):
     st.image("General Enquiry Flowchart.png")
 
 with st.expander("Flowchart for Financial Assistance (click to expand or collapse)"):   
-    st.image("Financial Assistance FLowchart.png")
+    st.image("Financial Assistance Flowchart.png")

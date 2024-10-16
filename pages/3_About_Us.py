@@ -9,7 +9,7 @@ st.set_page_config(
 # endregion <--------- Streamlit App Configuration --------->
 
 st.title(":blue[askAIC] - Welcome to the :heart: of Care")
-st.markdown("***an LLM-powered web-application developed by a novice in partial fulfillment of the Singapore GovTech AI Champions Bootcamp 2024.***")
+st.markdown("***an LLM-powered web-application developed by Kim Yam HANG in partial fulfillment of the Singapore GovTech AI Champions Bootcamp 2024.***")
 st.subheader(":blue[Project Objectives]")
 st.markdown("""To develop a web-application that enables users to</br>
             <ul>
@@ -46,8 +46,6 @@ st.markdown("""<ul>
 st.subheader(":blue[Project Features]")
 st.markdown("""On the <b>front-end</b>, the application focus on presenting a clean and simple interface where users need at most two clicks to get information.</br>
             On the <b>back-end</b> where CrewAI agents are deployed with WebSearchTool to search specific websites and being mindful that we do not want the target websites to be searched using inappropriate keywords or expressions, an additional layer is introduced to check for inappropriate content in the user prompt before deploying agents to complete the tasks.""",unsafe_allow_html=True)
-st.subheader(":blue[The Novice]")
-st.markdown("""Hang Kim Yam (email: Hang_Kim_Yam@np.edu.sg)""")
 st.subheader(":blue[Acknowlegement]")
 st.markdown("""This project would not have been possible without the influence of a number of people:</br>
             <ul>

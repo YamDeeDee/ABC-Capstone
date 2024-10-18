@@ -8,12 +8,19 @@ st.set_page_config(
 )
 # endregion <--------- Streamlit App Configuration --------->
 
-st.title(":blue[askAIC] - Welcome to the :heart: of Care")
-st.markdown("***an LLM-powered web-application developed by Kim Yam HANG in partial fulfillment of the Singapore GovTech AI Champions Bootcamp 2024.***")
+title_container = st.container()
+col1, col2 = st.columns([0.1,0.9])
+with title_container:
+    with col1:
+        st.image("Senior Citizens.jpg",width=128)
+    with col2:
+        st.title(":blue[askAIC] - Welcome to the :heart: of Care")
+        st.markdown("""***an LLM-powered web-application developed by Kim Yam HANG in partial fulfillment of the Singapore GovTech AI Champions Bootcamp 2024.</br>
+                    Picture on the left is AI-generated. Any resemblance to real person(s) is coincidental.***""",unsafe_allow_html=True)
 st.subheader(":blue[Project Objectives]")
 st.markdown("""To develop a web-application that enables users to</br>
             <ul>
-            <li>make <b>General Enquiries</b> related to health issues and the Singapore Agency for Integrated Care (AIC), using natural language
+            <li>make <b>General Enquiries</b> related to the Singapore Agency for Integrated Care (AIC), using natural language
             <li>obtain quick summary of <b>Financial Assistance</b> schemes based on different category of needs
             </ul>
             This application aims to be a convenient 'first-stop' for users wishing to get information related to integrated care based on a topic of their interest. 

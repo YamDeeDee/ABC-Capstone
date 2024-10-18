@@ -8,7 +8,13 @@ st.set_page_config(
 )
 # endregion <--------- Streamlit App Configuration --------->
 
-st.title(":blue[askAIC] - Methodology")
+title_container = st.container()
+col1, col2 = st.columns([0.1,0.9])
+with title_container:
+    with col1:
+        st.image("AI Brain.jpg",width=128)
+    with col2:
+        st.title(":blue[askAIC] - Methodology")
 
 st.subheader("File Structure")
 st.markdown("""Root</br>

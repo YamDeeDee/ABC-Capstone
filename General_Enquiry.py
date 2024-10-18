@@ -21,7 +21,16 @@ st.set_page_config(
 )
 # endregion <--------- Streamlit App Configuration --------->
 
-st.title(":blue[askAIC] - Welcome to the :heart: of Care")
+title_container = st.container()
+col1, col2 = st.columns([0.1,0.9])
+with title_container:
+    with col1:
+        st.image("Female Caregiver.jpeg",width=128)
+    with col2:
+        st.title(":blue[askAIC] - Welcome to the :heart: of Care")
+        st.markdown("""***an LLM-powered web-application developed by Kim Yam HANG in partial fulfillment of the Singapore GovTech AI Champions Bootcamp 2024.</br>
+                    Picture on the left is AI-generated. Any resemblance to real person(s) is coincidental.***""",unsafe_allow_html=True)
+
 with st.expander("Disclaimer", icon=":material/info:"):
     st.markdown("<b>IMPORTANT NOTICE:</b></br>\
             This web application is a prototype developed for educational purposes only.\
@@ -33,7 +42,7 @@ with st.expander("Disclaimer", icon=":material/info:"):
 form = st.form(key="form")
 form.subheader("General Enquiry")
 
-user_prompt = form.text_area("Ask me anything related to integrated care", height=100)
+user_prompt = form.text_area("Ask me anything related to Agency for Integrated Care", height=100)
 
 if form.form_submit_button("Submit",type="primary"):
     if check_offending_content(user_prompt)=='Yes':

@@ -87,7 +87,7 @@ def createCrew(pb, pt, wb, wt, url):
 
         tools=[tool_websearch],
         allow_delegation=False, 
-        verbose=True, 
+        verbose=False, 
     )
 
     agent_writer = writer = Agent(
@@ -102,7 +102,7 @@ def createCrew(pb, pt, wb, wt, url):
         backstory = wb,
 
         allow_delegation=False, 
-        verbose=True, 
+        verbose=False, 
     )
 
     # Creating Tasks

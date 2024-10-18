@@ -7,7 +7,15 @@ st.set_page_config(
     
 )
 
-st.title(":blue[askAIC] - Welcome to the :heart: of Care")
+title_container = st.container()
+col1, col2 = st.columns([0.1,0.9])
+with title_container:
+    with col1:
+        st.image("Male Caregiver.jpeg",width=128)
+    with col2:
+        st.title(":blue[askAIC] - Welcome to the :heart: of Care")
+        st.markdown("""***an LLM-powered web-application developed by Kim Yam HANG in partial fulfillment of the Singapore GovTech AI Champions Bootcamp 2024.</br>
+                    Picture on the left is AI-generated. Any resemblance to real person(s) is coincidental.***""",unsafe_allow_html=True)
 
 with st.expander("Disclaimer", icon=":material/info:"):
     st.markdown("<b>IMPORTANT NOTICE:</b></br>\

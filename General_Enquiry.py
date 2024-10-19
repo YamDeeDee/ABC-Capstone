@@ -61,6 +61,5 @@ if form.form_submit_button("Submit",type="primary"):
                 if response=='No answer':
                     st.write("Sorry. I cannot find information on :blue[**'" + user_prompt + "'**] from the Agency for Integrated Care.")
                 else:
-                    response = response.replace("```markdown","")
-                    response = response.replace("```","")
+                    response = response.replace("```markdown","").replace("```","").replace("$","\$")
                     st.write(response)

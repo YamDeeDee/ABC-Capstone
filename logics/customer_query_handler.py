@@ -31,6 +31,7 @@ planner_task_description_general = """\
 writer_task_description_general = """\
         1. Use the content plan to craft a response on {query} based on the target audience's interests.
         2. Only use information from https://www.aic.sg.
+        3. Do not provide email addresses and phone addresses other than those obtained from https://www.aic.sg.
         3. If the response from Content Planner contains 'No relevant information', respond with 'No answer'
         4. Proofread for grammatical errors."""
 
@@ -74,18 +75,7 @@ def createCrew(pb, pt, wb, wt, url):
         role="Content Planner",
         goal="Gather and plan engaging and factually accurate content on {query}",
         max_iter="5",
-
-#        backstory="""You're working on planning a response to a query: {query}.
-#        Any reference to 'AIC' in {query} should be replaced by 'Agency for Integrated Care'.
-#        You collect information that helps the audience obtain the relevant answers to their queries.
-#        Your work is the basis for the Content Writer to write a response to this query.
-#        Use only the tools provided to gather the information.
-#        The information you provide should only be from {url}'.
-#        Do not answer if the query is not related to 'Agency for Integrated Care'.
-#        """, 
-
         backstory = pb,
-
         tools=[tool_websearch],
         allow_delegation=False, 
         verbose=True, 
@@ -95,41 +85,21 @@ def createCrew(pb, pt, wb, wt, url):
         role="Content Writer",
         goal="Write factually accurate response to the query: {query}",
         max_iter="5",
-
-#        backstory="""You're working on writing the response to the query: {query}.
-#        You base your writing on the work of the Content Planner, who provides an outline and relevant context about the query.
-#        You follow the main objectives and direction of the outline as provide by the Content Planner.""",
-
         backstory = wb,
-
         allow_delegation=False, 
         verbose=True, 
     )
 
     # Creating Tasks
     task_plan = Task(
-#        description="""\
-#        1. Identify the target audience, considering their interests and pain points.
-#        2. Only use information from {url}.
-#        3. Develop a detailed content outline, including key points.
-#        4. Do not answer if {query} is not related to 'Agency for Integrated Care'""",
-
         description = pt,
-
         expected_output="""\
-        A comprehensive content plan document with an outline, key points, and resources.""",
+        A comprehensive content plan document with an outline and key points""",
         agent=agent_planner,
     )
 
     task_write = Task(
-#        description="""\
-#        1. Use the content plan to craft a response on {query} based on the target audience's interests.
-#        2. Only use information from https://www.aic.sg.
-#        3. Do not answer if {query} is not related to 'Agency for Integrated Care'.
-#        4. Proofread for grammatical errors.""",
-
         description = wt,
-
         expected_output="""
         A well-written response "in markdown format.""",
         agent=agent_writer,

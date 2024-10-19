@@ -73,7 +73,7 @@ def createCrew(pb, pt, wb, wt, url):
     agent_planner = Agent(
         role="Content Planner",
         goal="Gather and plan engaging and factually accurate content on {query}",
-        max_iter="2",
+        max_iter="5",
 
 #        backstory="""You're working on planning a response to a query: {query}.
 #        Any reference to 'AIC' in {query} should be replaced by 'Agency for Integrated Care'.
@@ -94,7 +94,7 @@ def createCrew(pb, pt, wb, wt, url):
     agent_writer = writer = Agent(
         role="Content Writer",
         goal="Write factually accurate response to the query: {query}",
-        max_iter="2",
+        max_iter="5",
 
 #        backstory="""You're working on writing the response to the query: {query}.
 #        You base your writing on the work of the Content Planner, who provides an outline and relevant context about the query.

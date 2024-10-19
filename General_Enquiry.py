@@ -14,24 +14,19 @@ from helper_functions.llm import check_offending_content
 if not check_password():
     st.stop()
 
-# region <--------- Streamlit App Configuration --------->
 st.set_page_config(
     layout="wide",
     page_title="askAIC"
 )
-# endregion <--------- Streamlit App Configuration --------->
 
-title_container = st.container()
-col1, col2 = st.columns([0.1,0.9])
-with title_container:
-    with col1:
-        st.image("Female Caregiver.jpeg",width=128)
-    with col2:
-        st.title(":blue[askAIC] - Welcome to the :heart: of Care")
-        st.markdown("""***an LLM-powered web-application developed by Kim Yam HANG in partial fulfillment of the Singapore GovTech AI Champions Bootcamp 2024.</br>
-                    Picture on the left is AI-generated. Any resemblance to real person(s) is coincidental.***""",unsafe_allow_html=True)
+st.sidebar.image(["Female Caregiver.jpeg","Male Caregiver.jpeg","Senior Citizens.jpg"],width=94)
+st.sidebar.caption("***Pictures AI-generated. Any resemblance to person(s) is purely coincidental.***")
+st.sidebar.caption("***Submitted By:*** HANG Kim  Yam")
 
-with st.expander("Disclaimer", icon=":material/info:"):
+st.title("ask:blue[AIC] - Welcome to the :heart: of Care")
+st.markdown("""***an LLM-powered web-application developed in partial fulfillment of the Singapore GovTech AI Champions Bootcamp 2024***""")
+
+with st.expander(":red[**Disclaimer**]", icon=":material/info:"):
     st.markdown("<b>IMPORTANT NOTICE:</b></br>\
             This web application is a prototype developed for educational purposes only.\
             The information provided here is NOT intended for real-world usage and should not be relied upon for making any decisions, especially those related to financial, legal, or healthcare matters.</br></br>\
@@ -45,8 +40,11 @@ form.subheader("General Enquiry")
 user_prompt = form.text_area("Ask me anything related to Agency for Integrated Care", height=100)
 
 if form.form_submit_button("Submit",type="primary"):
+    user_prompt = user_prompt.strip()
     if check_offending_content(user_prompt)=='Yes':
         st.write(":fearful: I am unable to process your request further as I detect inappropriate content such as hate speech or offending expression. Be kind, be caring and be loving for we are the :heart: of Care :innocent:")
+    elif len(user_prompt)==0:
+        st.write("Please enter your query in the text box and click the :blue[**Submit**] button")
     else:    
         with st.spinner('Please wait while we find the answer for you...'):
             time.sleep(5)
@@ -60,6 +58,9 @@ if form.form_submit_button("Submit",type="primary"):
             else:
                 user_prompt = user_prompt.replace("AIC","Agency for Integrated Care").replace("A.I.C", "Agency for Integrated Care")
                 response = process_user_message_general(user_prompt)
-                response = response.replace("```markdown","")
-                response = response.replace("```","")
-                st.write(response)
+                if response=='No answer':
+                    st.write("Sorry. I cannot find information on :blue[**'" + user_prompt + "'**] from the Agency for Integrated Care.")
+                else:
+                    response = response.replace("```markdown","")
+                    response = response.replace("```","")
+                    st.write(response)

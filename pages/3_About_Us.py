@@ -1,22 +1,18 @@
 import streamlit as st
 
-# region <--------- Streamlit App Configuration --------->
 st.set_page_config(
     page_title="askAIC",
     layout="wide"
     
 )
-# endregion <--------- Streamlit App Configuration --------->
 
-title_container = st.container()
-col1, col2 = st.columns([0.1,0.9])
-with title_container:
-    with col1:
-        st.image("Senior Citizens.jpg",width=128)
-    with col2:
-        st.title(":blue[askAIC] - Welcome to the :heart: of Care")
-        st.markdown("""***an LLM-powered web-application developed by Kim Yam HANG in partial fulfillment of the Singapore GovTech AI Champions Bootcamp 2024.</br>
-                    Picture on the left is AI-generated. Any resemblance to real person(s) is coincidental.***""",unsafe_allow_html=True)
+st.sidebar.image(["Female Caregiver.jpeg","Male Caregiver.jpeg","Senior Citizens.jpg"],width=94)
+st.sidebar.caption("***Pictures AI-generated. Any resemblance to person(s) is purely coincidental.***")
+st.sidebar.caption("***Submitted By:*** HANG Kim  Yam")
+
+st.title("ask:blue[AIC] - Welcome to the :heart: of Care")
+st.markdown("""***an LLM-powered web-application developed in partial fulfillment of the Singapore GovTech AI Champions Bootcamp 2024***""")
+
 st.subheader(":blue[Project Objectives]")
 st.markdown("""To develop a web-application that enables users to</br>
             <ul>

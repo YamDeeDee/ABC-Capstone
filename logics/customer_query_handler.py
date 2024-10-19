@@ -21,16 +21,17 @@ writer_backstory_general = """You're working on writing the response to the quer
         You base your writing on the work of the Content Planner, who provides an outline and relevant context about the query.
         You follow the main objectives and direction of the outline as provide by the Content Planner."""
 
+#1. Identify the target audience, considering their interests and pain points.
+
 planner_task_description_general = """\
-        1. Identify the target audience, considering their interests and pain points.
-        2. Only use information from https://www.aic.sg.
-        3. Develop a detailed content outline, including key points.
-        5. Respond with 'No relevant information' if you are not able to find relevant information linking {query} to 'Agency for Integrated Care'."""
+        1. Only use information from https://www.aic.sg.
+        2. Develop a detailed content outline, including key points.
+        3. Respond with 'No relevant information' if you are not able to find relevant information linking {query} to 'Agency for Integrated Care'."""
 
 writer_task_description_general = """\
         1. Use the content plan to craft a response on {query} based on the target audience's interests.
         2. Only use information from https://www.aic.sg.
-        3. If the response from Content Planner contains 'No relevant information', respond with 'I am unable to find information specifically linking {query} to Agency for Integrated Care. Please refine your query.'
+        3. If the response from Content Planner contains 'No relevant information', respond with 'No answer'
         4. Proofread for grammatical errors."""
 
 # Financial Assistance
@@ -72,7 +73,7 @@ def createCrew(pb, pt, wb, wt, url):
     agent_planner = Agent(
         role="Content Planner",
         goal="Gather and plan engaging and factually accurate content on {query}",
-        max_iter="10",
+        max_iter="2",
 
 #        backstory="""You're working on planning a response to a query: {query}.
 #        Any reference to 'AIC' in {query} should be replaced by 'Agency for Integrated Care'.
@@ -87,13 +88,13 @@ def createCrew(pb, pt, wb, wt, url):
 
         tools=[tool_websearch],
         allow_delegation=False, 
-        verbose=False, 
+        verbose=True, 
     )
 
     agent_writer = writer = Agent(
         role="Content Writer",
         goal="Write factually accurate response to the query: {query}",
-        max_iter="10",
+        max_iter="2",
 
 #        backstory="""You're working on writing the response to the query: {query}.
 #        You base your writing on the work of the Content Planner, who provides an outline and relevant context about the query.
@@ -102,7 +103,7 @@ def createCrew(pb, pt, wb, wt, url):
         backstory = wb,
 
         allow_delegation=False, 
-        verbose=False, 
+        verbose=True, 
     )
 
     # Creating Tasks

@@ -7,9 +7,6 @@ st.set_page_config(
     
 )
 
-if not check_password():
-    st.stop()
-
 st.sidebar.image(["Female Caregiver.jpeg","Male Caregiver.jpeg","Senior Citizens.jpg"],width=94)
 st.sidebar.caption("***Pictures AI-generated***. Any resemblance to person(s) is purely coincidental.")
 st.sidebar.caption("***Submitted By:*** HANG Kim  Yam")

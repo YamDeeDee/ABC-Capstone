@@ -46,7 +46,7 @@ if form.form_submit_button("Submit",type="primary"):
     elif len(user_prompt)==0:
         st.write("Please enter your query in the text box and click the :blue[**Submit**] button")
     else:    
-        with st.spinner('Please wait while we find the answer for you...'):
+        with st.spinner('Please wait while we find the information for you...'):
             time.sleep(5)
             if 'contact' in user_prompt.lower():
                 st.write("""The quickest ways to get in touch with AIC are:

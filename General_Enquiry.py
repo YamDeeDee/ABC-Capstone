@@ -37,7 +37,7 @@ with st.expander(":red[**Disclaimer**]", icon=":material/info:"):
 form = st.form(key="form")
 form.subheader("General Enquiry")
 
-user_prompt = form.text_area("I am here to help you find information from the Agency for Integrated Care. What do you want to know? (e.g. I am a caregiver for a parent with dementia. How do I get help?)", height=100)
+user_prompt = form.text_area("I am here to help you find information from the Agency for Integrated Care. What do you want to know? (e.g. dementia care)", height=100)
 
 if form.form_submit_button("Submit",type="primary"):
     user_prompt = user_prompt.strip()

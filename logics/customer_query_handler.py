@@ -31,7 +31,7 @@ planner_task_description_general = """\
 writer_task_description_general = """\
         1. Use the content plan to craft a response on {query} based on the target audience's interests.
         2. Only use information from https://www.aic.sg.
-        3. Do not provide email addresses and phone addresses other than those obtained from https://www.aic.sg.
+        3. Do not provide email addresses and phone numbers other than those obtained from https://www.aic.sg.
         3. If the response from Content Planner contains 'No relevant information', respond with 'No answer'
         4. Proofread for grammatical errors."""
 

@@ -1,5 +1,9 @@
 import streamlit as st
+from helper_functions.utility import check_password
 from logics.customer_query_handler import process_user_message_financial
+
+if not check_password():
+    st.stop()
 
 st.set_page_config(
     page_title="askAIC",

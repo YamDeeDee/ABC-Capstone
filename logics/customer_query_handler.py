@@ -74,7 +74,7 @@ def createCrew(pb, pt, wb, wt, url):
     agent_planner = Agent(
         role="Content Planner",
         goal="Gather and plan engaging and factually accurate content on {query}",
-        max_iter="5",
+        max_iter="10",
         backstory = pb,
         tools=[tool_websearch],
         allow_delegation=False, 
@@ -84,7 +84,7 @@ def createCrew(pb, pt, wb, wt, url):
     agent_writer = writer = Agent(
         role="Content Writer",
         goal="Write factually accurate response to the query: {query}",
-        max_iter="5",
+        max_iter="10",
         backstory = wb,
         allow_delegation=False, 
         verbose=True, 

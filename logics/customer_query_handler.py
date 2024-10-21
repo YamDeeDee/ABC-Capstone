@@ -25,8 +25,10 @@ writer_backstory_general = """You're working on writing the response to the quer
 
 planner_task_description_general = """\
         1. Only use information from https://www.aic.sg.
-        2. Develop a detailed content outline, including key points.
-        3. Respond with 'No relevant information' if you are not able to find relevant information linking {query} to 'Agency for Integrated Care'."""
+        2. Develop a detailed content outline, including key points. 
+        3. Do not number the key points.
+        4. Use 'Summary' instead of 'Conclusion' to end your outline.  Do not include call for action.
+        5. Respond with 'No relevant information' if you are not able to find relevant information linking {query} to 'Agency for Integrated Care'."""
 
 writer_task_description_general = """\
         1. Use the content plan to craft a response on {query} based on the target audience's interests.
